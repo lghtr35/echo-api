@@ -1,0 +1,1521 @@
+basePath: /api/v1
+definitions:
+  auth.LoginRequest:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  context.CreateContextRequest:
+    properties:
+      languageID:
+        type: string
+      userID:
+        type: string
+    type: object
+  document.CreateDocumentMultipartRequest:
+    type: object
+  document.CreateDocumentsMultipartRequest:
+    type: object
+  document.CreateNoteDocumentsRequest:
+    type: object
+  document.DocumentWrapped:
+    properties:
+      contextId:
+        type: string
+      createdAt:
+        type: string
+      extension:
+        type: string
+      id:
+        type: string
+      isReadableByAll:
+        type: boolean
+      location:
+        type: string
+      name:
+        type: string
+      noteId:
+        type: string
+      path:
+        type: string
+      updatedAt:
+        type: string
+      userId:
+        type: string
+    type: object
+  entities.Context:
+    properties:
+      createdAt:
+        type: string
+      documents:
+        items:
+          $ref: '#/definitions/entities.Document'
+        type: array
+      externalId:
+        type: string
+      id:
+        type: string
+      languageId:
+        type: string
+      notes:
+        items:
+          $ref: '#/definitions/entities.Note'
+        type: array
+      prompts:
+        items:
+          $ref: '#/definitions/entities.Prompt'
+        type: array
+      updatedAt:
+        type: string
+      userId:
+        type: string
+    type: object
+  entities.Document:
+    properties:
+      contextId:
+        type: string
+      createdAt:
+        type: string
+      extension:
+        type: string
+      id:
+        type: string
+      isReadableByAll:
+        type: boolean
+      location:
+        type: string
+      name:
+        type: string
+      noteId:
+        type: string
+      updatedAt:
+        type: string
+      userId:
+        type: string
+    type: object
+  entities.Language:
+    properties:
+      alpha2Code:
+        type: string
+      alpha3Code:
+        type: string
+      contexts:
+        items:
+          $ref: '#/definitions/entities.Context'
+        type: array
+      createdAt:
+        type: string
+      icon:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      notes:
+        items:
+          $ref: '#/definitions/entities.Note'
+        type: array
+      updatedAt:
+        type: string
+      users:
+        items:
+          $ref: '#/definitions/entities.User'
+        type: array
+    type: object
+  entities.Note:
+    properties:
+      contextId:
+        type: string
+      createdAt:
+        type: string
+      documents:
+        items:
+          $ref: '#/definitions/entities.Document'
+        type: array
+      header:
+        type: string
+      id:
+        type: string
+      languageId:
+        type: string
+      payload:
+        type: string
+      updatedAt:
+        type: string
+      userId:
+        type: string
+    type: object
+  entities.Password:
+    properties:
+      createdAt:
+        type: string
+      id:
+        type: string
+      password:
+        type: string
+      updatedAt:
+        type: string
+      userId:
+        type: string
+    type: object
+  entities.Prompt:
+    properties:
+      contextId:
+        type: string
+      createdAt:
+        type: string
+      entityId:
+        type: string
+      id:
+        type: string
+      updatedAt:
+        type: string
+      value:
+        type: string
+    type: object
+  entities.Role:
+    enum:
+    - 1
+    - 2
+    type: integer
+    x-enum-varnames:
+    - Admin
+    - Customer
+  entities.User:
+    properties:
+      contexts:
+        items:
+          $ref: '#/definitions/entities.Context'
+        type: array
+      createdAt:
+        type: string
+      documents:
+        items:
+          $ref: '#/definitions/entities.Document'
+        type: array
+      email:
+        type: string
+      id:
+        type: string
+      languages:
+        items:
+          $ref: '#/definitions/entities.Language'
+        type: array
+      name:
+        type: string
+      notes:
+        items:
+          $ref: '#/definitions/entities.Note'
+        type: array
+      password:
+        $ref: '#/definitions/entities.Password'
+      role:
+        $ref: '#/definitions/entities.Role'
+      updatedAt:
+        type: string
+    type: object
+  language.CreateLanguageRequest:
+    properties:
+      alpha2Code:
+        type: string
+      alpha3Code:
+        type: string
+      icon:
+        type: string
+      name:
+        type: string
+    type: object
+  language.UpdateLanguageRequest:
+    properties:
+      alpha2code:
+        type: string
+      alpha3code:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  note.CreateNoteRequest:
+    properties:
+      contextId:
+        type: string
+      header:
+        type: string
+      languageId:
+        type: string
+      payload:
+        type: string
+      userId:
+        type: string
+    type: object
+  note.UpdateNoteRequest:
+    properties:
+      header:
+        type: string
+      id:
+        type: string
+      languageId:
+        type: string
+      payload:
+        type: string
+      userId:
+        type: string
+    type: object
+  operation.Operation:
+    enum:
+    - 0
+    - 1
+    type: integer
+    x-enum-varnames:
+    - Insert
+    - Delete
+  pagination.PaginationResponse-entities_Document:
+    properties:
+      content:
+        items:
+          $ref: '#/definitions/entities.Document'
+        type: array
+      page:
+        type: integer
+      size:
+        type: integer
+      totalCount:
+        type: integer
+    type: object
+  pagination.PaginationResponse-entities_Language:
+    properties:
+      content:
+        items:
+          $ref: '#/definitions/entities.Language'
+        type: array
+      page:
+        type: integer
+      size:
+        type: integer
+      totalCount:
+        type: integer
+    type: object
+  pagination.PaginationResponse-entities_Note:
+    properties:
+      content:
+        items:
+          $ref: '#/definitions/entities.Note'
+        type: array
+      page:
+        type: integer
+      size:
+        type: integer
+      totalCount:
+        type: integer
+    type: object
+  pagination.PaginationResponse-entities_User:
+    properties:
+      content:
+        items:
+          $ref: '#/definitions/entities.User'
+        type: array
+      page:
+        type: integer
+      size:
+        type: integer
+      totalCount:
+        type: integer
+    type: object
+  user.CreateUserRequest:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+    type: object
+  user.UpdateUserRequest:
+    properties:
+      id:
+        type: string
+      languageOps:
+        items:
+          properties:
+            op:
+              $ref: '#/definitions/operation.Operation'
+            val:
+              $ref: '#/definitions/entities.Language'
+          type: object
+        type: array
+      name:
+        type: string
+      noteOps:
+        items:
+          properties:
+            op:
+              $ref: '#/definitions/operation.Operation'
+            val:
+              $ref: '#/definitions/entities.Note'
+          type: object
+        type: array
+    type: object
+externalDocs:
+  description: OpenAPI
+  url: https://swagger.io/resources/open-api/
+host: localhost:11242
+info:
+  contact:
+    email: serdilcakmak@gmail.com
+    name: API Support
+    url: https://www.serdilcakmak.com
+  description: AI assisted learning, studying and working tool.
+  license:
+    name: Copyright of Serdil Cagin Cakmak
+  termsOfService: http://swagger.io/terms/
+  title: LanguHelp API
+  version: 0.0.1
+paths:
+  /admin/languages:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a list of languages that match the specified filter criteria.
+      parameters:
+      - in: query
+        name: alpha2Code
+        type: string
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: courseIds
+        type: array
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: ids
+        type: array
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: page
+        required: true
+        type: integer
+      - in: query
+        name: size
+        required: true
+        type: integer
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: userIds
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Filtered languages
+          schema:
+            $ref: '#/definitions/pagination.PaginationResponse-entities_Language'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Reads languages based on filter criteria.
+      tags:
+      - admin
+      - languages
+    patch:
+      consumes:
+      - application/json
+      description: Updates the details of a language based on the provided payload.
+      parameters:
+      - description: Update Language Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/language.UpdateLanguageRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Updated language
+          schema:
+            $ref: '#/definitions/entities.Language'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Updates an existing language.
+      tags:
+      - admin
+      - languages
+    post:
+      consumes:
+      - application/json
+      description: Accepts a payload to create a new language and returns the created
+        language ID.
+      parameters:
+      - description: Create Language Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/language.CreateLanguageRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Language ID response
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Creates a new language.
+      tags:
+      - admin
+      - languages
+  /admin/languages/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes the language associated with the provided ID.
+      parameters:
+      - description: Language ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Deletion success status
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Deletes a language by ID.
+      tags:
+      - admin
+      - languages
+  /admin/notes:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a list of notes that match the specified filter criteria.
+      parameters:
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: contexts
+        type: array
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: documents
+        type: array
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: ids
+        type: array
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: languages
+        type: array
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: page
+        required: true
+        type: integer
+      - in: query
+        name: size
+        required: true
+        type: integer
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: users
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Filtered notes
+          schema:
+            $ref: '#/definitions/pagination.PaginationResponse-entities_Note'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Reads notes based on filter criteria.
+      tags:
+      - admin
+      - notes
+  /admin/users:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a list of users that match the specified filter criteria.
+      parameters:
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: courseIds
+        type: array
+      - in: query
+        name: emailQuery
+        type: string
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: ids
+        type: array
+      - in: query
+        name: nameQuery
+        type: string
+      - in: query
+        name: page
+        required: true
+        type: integer
+      - in: query
+        name: size
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Filtered users
+          schema:
+            $ref: '#/definitions/pagination.PaginationResponse-entities_User'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Reads users based on filter criteria.
+      tags:
+      - admin
+      - users
+  /admin/users/{id}/makeadmin:
+    patch:
+      consumes:
+      - application/json
+      description: Updates the role of a user to admin using their ID.
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: Successfully promoted to admin
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Promotes a user to admin status.
+      tags:
+      - admin
+  /api:
+    get:
+      consumes:
+      - application/json
+      description: serve basic html
+      produces:
+      - text/html
+      responses:
+        "200":
+          description: OK
+      summary: Gets home html
+      tags:
+      - util
+  /api/healthcheck:
+    get:
+      consumes:
+      - application/json
+      description: Get the status on Config, DB conn, Logging, Services
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Healthcheck
+      tags:
+      - util
+  /contexts:
+    post:
+      consumes:
+      - application/json
+      description: Accepts a payload to create a new context and associates it with
+        the authenticated user if a user ID is not provided.
+      parameters:
+      - description: Create Context Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/context.CreateContextRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Context ID response
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Creates a new context.
+      tags:
+      - authorized
+      - contexts
+  /contexts/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes the context associated with the provided ID. Only the owner
+        of the context or authorized actions are permitted.
+      parameters:
+      - description: Context ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Deletion success status
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Deletes a context by ID.
+      tags:
+      - authorized
+      - contexts
+  /documents:
+    get:
+      consumes:
+      - application/json
+      description: Fetches a list of user documents that match the specified filter
+        criteria.
+      parameters:
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: contextIds
+        type: array
+      - in: query
+        name: extension
+        type: string
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: ids
+        type: array
+      - in: query
+        name: location
+        type: string
+      - in: query
+        name: name
+        type: string
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: noteIds
+        type: array
+      - in: query
+        name: page
+        required: true
+        type: integer
+      - in: query
+        name: size
+        required: true
+        type: integer
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: userIds
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Filtered documents
+          schema:
+            $ref: '#/definitions/pagination.PaginationResponse-entities_Document'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Retrieves user documents based on filter criteria.
+      tags:
+      - authorized
+      - documents
+    post:
+      consumes:
+      - multipart/form-data
+      description: Creates a new document associated with the authenticated user,
+        using multipart data for file upload.
+      parameters:
+      - description: Create Document Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/document.CreateDocumentMultipartRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Document ID
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Creates a user document from multipart data.
+      tags:
+      - authorized
+      - documents
+  /documents/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a specific document for the authenticated user based on
+        document ID.
+      parameters:
+      - description: Document ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Deletion status
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Deletes a user document by ID.
+      tags:
+      - authorized
+      - documents
+    get:
+      consumes:
+      - application/json
+      description: Fetches the details of a specific user document based on its ID.
+        Only the owner of the document or authorized actions are permitted.
+      parameters:
+      - description: Document ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Document details
+          schema:
+            $ref: '#/definitions/document.DocumentWrapped'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Retrieves a user document by ID.
+      tags:
+      - authorized
+      - documents
+  /documents/bulk:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Creates multiple documents for the authenticated user, using multipart
+        data for file uploads.
+      parameters:
+      - description: Create Bulk Documents Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/document.CreateDocumentsMultipartRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Bulk Document IDs
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Creates multiple user documents from multipart data.
+      tags:
+      - authorized
+      - documents
+  /documents/notes:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Creates documents linked to a specific note, using multipart data
+        for file uploads. The documents will be associated with the note ID.
+      parameters:
+      - description: Create Note Documents Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/document.CreateNoteDocumentsRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Created document IDs
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Creates note-related documents from multipart data.
+      tags:
+      - authorized
+      - documents
+      - notes
+  /languages:
+    get:
+      consumes:
+      - application/json
+      description: Fetches a list of languages that match the specified filter criteria.
+      parameters:
+      - in: query
+        name: alpha2Code
+        type: string
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: courseIds
+        type: array
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: ids
+        type: array
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: page
+        required: true
+        type: integer
+      - in: query
+        name: size
+        required: true
+        type: integer
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: userIds
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Filtered languages
+          schema:
+            $ref: '#/definitions/pagination.PaginationResponse-entities_Language'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Retrieves languages based on filter criteria.
+      tags:
+      - authorized
+      - languages
+  /languages/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Fetches the details of a specific language based on its ID.
+      parameters:
+      - description: Language ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Language details
+          schema:
+            $ref: '#/definitions/entities.Language'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Retrieves a language by ID.
+      tags:
+      - authorized
+      - languages
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Handles user login requests by validating credentials and returning
+        a token.
+      parameters:
+      - description: Login Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/auth.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Token response
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Authenticates a user and generates a token.
+      tags:
+      - anon
+      - auth
+  /notes:
+    get:
+      consumes:
+      - application/json
+      description: Fetches a list of notes that match the specified filter criteria.
+        Notes will only be retrieved for the authorized user.
+      parameters:
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: contexts
+        type: array
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: documents
+        type: array
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: ids
+        type: array
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: languages
+        type: array
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: page
+        required: true
+        type: integer
+      - in: query
+        name: size
+        required: true
+        type: integer
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: users
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Filtered notes
+          schema:
+            $ref: '#/definitions/pagination.PaginationResponse-entities_Note'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Retrieves notes based on filter criteria.
+      tags:
+      - authorized
+      - notes
+    patch:
+      consumes:
+      - application/json
+      description: Updates the details of a specific note based on the provided payload.
+        Only the owner of the note or authorized actions are permitted.
+      parameters:
+      - description: Update Note Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/note.UpdateNoteRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Updated note details
+          schema:
+            $ref: '#/definitions/entities.Note'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Updates a note.
+      tags:
+      - authorized
+      - notes
+    post:
+      consumes:
+      - application/json
+      description: Accepts a payload to create a new note and associates it with the
+        authenticated user if a user ID is not provided.
+      parameters:
+      - description: Create Note Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/note.CreateNoteRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Note ID response
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Creates a new note.
+      tags:
+      - authorized
+      - notes
+  /notes/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes the note associated with the provided ID. Only the owner
+        of the note or authorized actions are permitted.
+      parameters:
+      - description: Note ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Deletion success status
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Deletes a note by ID.
+      tags:
+      - authorized
+      - notes
+    get:
+      consumes:
+      - application/json
+      description: Fetches the details of a specific note based on its ID. Only the
+        owner of the note or authorized actions are permitted.
+      parameters:
+      - description: Note ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Note details
+          schema:
+            $ref: '#/definitions/entities.Note'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Retrieves a note by ID.
+      tags:
+      - authorized
+      - notes
+  /register:
+    post:
+      consumes:
+      - application/json
+      description: Handles user creation requests by accepting a payload and returning
+        the created user ID.
+      parameters:
+      - description: Create User Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/user.CreateUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User ID response
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Creates a new user.
+      tags:
+      - anon
+      - users
+  /users:
+    patch:
+      consumes:
+      - application/json
+      description: Updates the details of a user based on the provided payload. Only
+        the user themselves or authorized actions are permitted.
+      parameters:
+      - description: Update User Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/user.UpdateUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Updated user details
+          schema:
+            $ref: '#/definitions/entities.User'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Updates user information.
+      tags:
+      - authorized
+      - users
+  /users/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes the user associated with the provided ID. Only the user
+        themselves or authorized actions are permitted.
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Deletion success status
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Deletes a user by ID.
+      tags:
+      - authorized
+      - users
+    get:
+      consumes:
+      - application/json
+      description: Fetches details of a user based on the provided ID. Only the user
+        themselves or authorized actions are permitted.
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User details
+          schema:
+            $ref: '#/definitions/entities.User'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Retrieves a user by ID.
+      tags:
+      - authorized
+      - users
+  /users/{id}/make-non-admin/{role}:
+    patch:
+      consumes:
+      - application/json
+      description: Updates a user’s role to a non-admin role using their ID and the
+        new role value. Only the user themselves or authorized actions are permitted.
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: New role ID
+        in: path
+        name: role
+        required: true
+        type: integer
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: Successfully changed role
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - JwtAuth: []
+      summary: Changes a user’s role to a non-admin role.
+      tags:
+      - authorized
+      - users
+securityDefinitions:
+  JwtAuth:
+    description: Bearer
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
