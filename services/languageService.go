@@ -1,11 +1,11 @@
 package services
 
 import (
+	requests "echo-api/models/dtos/requests/language"
+	responses "echo-api/models/dtos/responses/pagination"
+	"echo-api/models/entities"
+	"echo-api/util"
 	"fmt"
-	requests "reson8-learning-api/models/dtos/requests/language"
-	responses "reson8-learning-api/models/dtos/responses/pagination"
-	"reson8-learning-api/models/entities"
-	"reson8-learning-api/util"
 
 	"gorm.io/gorm/clause"
 )

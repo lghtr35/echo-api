@@ -1,8 +1,8 @@
 package implementations
 
 import (
+	"echo-api/util"
 	"errors"
-	"reson8-learning-api/util"
 )
 
 // TODO Implement

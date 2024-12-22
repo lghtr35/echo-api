@@ -1,11 +1,11 @@
 package implementations
 
 import (
+	"echo-api/managers"
+	"echo-api/models/entities"
 	"errors"
 	"fmt"
 	"io"
-	"reson8-learning-api/managers"
-	"reson8-learning-api/models/entities"
 	"strings"
 )
 

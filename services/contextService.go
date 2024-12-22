@@ -1,12 +1,12 @@
 package services
 
 import (
+	requests "echo-api/models/dtos/requests/context"
+	responses "echo-api/models/dtos/responses/pagination"
+	"echo-api/models/entities"
+	"echo-api/util"
 	"errors"
 	"fmt"
-	requests "reson8-learning-api/models/dtos/requests/context"
-	responses "reson8-learning-api/models/dtos/responses/pagination"
-	"reson8-learning-api/models/entities"
-	"reson8-learning-api/util"
 )
 
 type ContextService struct {

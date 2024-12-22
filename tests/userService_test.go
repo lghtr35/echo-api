@@ -1,13 +1,13 @@
 package tests
 
 import (
+	"echo-api/mocks"
+	"echo-api/models/dtos/requests/base"
+	"echo-api/models/dtos/requests/user"
+	"echo-api/models/entities"
+	"echo-api/services"
+	"echo-api/util"
 	"os"
-	"reson8-learning-api/mocks"
-	"reson8-learning-api/models/dtos/requests/base"
-	"reson8-learning-api/models/dtos/requests/user"
-	"reson8-learning-api/models/entities"
-	"reson8-learning-api/services"
-	"reson8-learning-api/util"
 	"testing"
 )
 

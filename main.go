@@ -3,9 +3,9 @@ package main
 import (
 	"strconv"
 
-	"reson8-learning-api/internal"
+	"echo-api/internal"
 
-	_ "reson8-learning-api/docs"
+	_ "echo-api/docs"
 
 	"github.com/gin-gonic/gin"
 )

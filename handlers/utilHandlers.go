@@ -1,8 +1,8 @@
 package handlers
 
 import (
+	"echo-api/util"
 	"net/http"
-	"reson8-learning-api/util"
 
 	"github.com/gin-gonic/gin"
 	swaggerfiles "github.com/swaggo/files"

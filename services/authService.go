@@ -1,13 +1,13 @@
 package services
 
 import (
+	"echo-api/managers"
+	requests "echo-api/models/dtos/requests/auth"
+	"echo-api/models/entities"
+	"echo-api/util"
 	"errors"
 	"fmt"
 	"net/http"
-	"reson8-learning-api/managers"
-	requests "reson8-learning-api/models/dtos/requests/auth"
-	"reson8-learning-api/models/entities"
-	"reson8-learning-api/util"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"

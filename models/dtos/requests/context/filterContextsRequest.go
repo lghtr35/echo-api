@@ -1,6 +1,6 @@
 package context
 
-import "reson8-learning-api/models/dtos/requests/base"
+import "echo-api/models/dtos/requests/base"
 
 type FilterContextsRequest struct {
 	base.PaginationRequestBase

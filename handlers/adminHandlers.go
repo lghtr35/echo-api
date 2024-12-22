@@ -1,14 +1,14 @@
 package handlers
 
 import (
+	"echo-api/models/dtos/requests/language"
+	"echo-api/models/dtos/requests/note"
+	"echo-api/models/dtos/requests/user"
+	_ "echo-api/models/dtos/responses/pagination"
+	"echo-api/services"
+	"echo-api/util"
 	"errors"
 	"net/http"
-	"reson8-learning-api/models/dtos/requests/language"
-	"reson8-learning-api/models/dtos/requests/note"
-	"reson8-learning-api/models/dtos/requests/user"
-	_ "reson8-learning-api/models/dtos/responses/pagination"
-	"reson8-learning-api/services"
-	"reson8-learning-api/util"
 
 	"github.com/gin-gonic/gin"
 )

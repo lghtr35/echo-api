@@ -1,7 +1,7 @@
 package document
 
 import (
-	base_request "reson8-learning-api/models/dtos/requests/base"
+	base_request "echo-api/models/dtos/requests/base"
 )
 
 type FilterDocumentsRequest struct {

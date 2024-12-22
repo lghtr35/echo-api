@@ -1,7 +1,7 @@
 package prompt
 
 import (
-	"reson8-learning-api/models/dtos/requests/base"
+	"echo-api/models/dtos/requests/base"
 )
 
 type FilterPromptsRequest struct {
