@@ -1,13 +1,13 @@
 package services
 
 import (
+	"echo-api/managers"
+	requests "echo-api/models/dtos/requests/prompt"
+	responses "echo-api/models/dtos/responses/pagination"
+	"echo-api/models/entities"
+	"echo-api/util"
 	"errors"
 	"fmt"
-	"reson8-learning-api/managers"
-	requests "reson8-learning-api/models/dtos/requests/prompt"
-	responses "reson8-learning-api/models/dtos/responses/pagination"
-	"reson8-learning-api/models/entities"
-	"reson8-learning-api/util"
 )
 
 type PromptService struct {

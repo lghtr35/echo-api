@@ -1,7 +1,7 @@
 package user
 
 import (
-	base "reson8-learning-api/models/dtos/requests/base"
+	base "echo-api/models/dtos/requests/base"
 )
 
 type FilterUsersRequest struct {

@@ -1,8 +1,8 @@
 package implementations
 
 import (
+	"echo-api/util"
 	"encoding/hex"
-	"reson8-learning-api/util"
 
 	"github.com/zeebo/blake3"
 )

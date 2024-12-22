@@ -1,4 +1,4 @@
-module reson8-learning-api
+module echo-api
 
 go 1.23.4
 

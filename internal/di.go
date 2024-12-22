@@ -1,13 +1,13 @@
 package internal
 
 import (
+	"echo-api/handlers"
+	"echo-api/managers"
+	"echo-api/managers/implementations"
+	"echo-api/models/entities"
+	"echo-api/services"
+	"echo-api/util"
 	"os"
-	"reson8-learning-api/handlers"
-	"reson8-learning-api/managers"
-	"reson8-learning-api/managers/implementations"
-	"reson8-learning-api/models/entities"
-	"reson8-learning-api/services"
-	"reson8-learning-api/util"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/postgres"

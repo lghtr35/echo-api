@@ -1,10 +1,10 @@
 package implementations
 
 import (
+	"echo-api/managers"
 	"errors"
 	"fmt"
 	"os"
-	"reson8-learning-api/managers"
 )
 
 type OnServerFileManager struct {

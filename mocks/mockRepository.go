@@ -1,10 +1,10 @@
 package mocks
 
 import (
+	"echo-api/util"
 	"errors"
 	"fmt"
 	"reflect"
-	"reson8-learning-api/util"
 	"slices"
 	"strconv"
 	"strings"

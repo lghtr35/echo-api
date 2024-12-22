@@ -1,6 +1,6 @@
 package document
 
-import "reson8-learning-api/models/entities"
+import "echo-api/models/entities"
 
 type DocumentWrapped struct {
 	entities.Document
