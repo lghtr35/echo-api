@@ -22,6 +22,13 @@ var fileManager managers.FileManager
 var promptManager managers.PromptGenManager
 var aiCommunicationManager managers.AiCommunicationManager
 
+var noteRepository *util.GormRepository[entities.Note]
+var userRepository *util.GormRepository[entities.User]
+var documentRepository *util.GormRepository[entities.Document]
+var languageRepository *util.GormRepository[entities.Language]
+var contextRepository *util.GormRepository[entities.Context]
+var promptRepository *util.GormRepository[entities.Prompt]
+
 var authService *services.AuthService
 var documentService *services.DocumentService
 var languageService *services.LanguageService
@@ -65,21 +72,32 @@ func InjectDeps() error {
 		return err
 	}
 
+	initializeRepositories()
+
 	configureServices()
 
-	InitializeHandlers()
+	initializeHandlers()
 
 	return nil
 }
 
+func initializeRepositories() {
+	noteRepository = util.NewGormRepository[entities.Note](db, []string{"Documents"})
+	documentRepository = util.NewGormRepository[entities.Document](db, []string{})
+	languageRepository = util.NewGormRepository[entities.Language](db, []string{"Notes", "Contexts"})
+	userRepository = util.NewGormRepository[entities.User](db, []string{"Contexts", "Documents", "Notes", "Languages"})
+	contextRepository = util.NewGormRepository[entities.Context](db, []string{"Notes", "Prompts", "Documents"})
+	promptRepository = util.NewGormRepository[entities.Prompt](db, []string{})
+}
+
 func configureServices() {
 	authService = services.NewAuthService(db, hasher, logger, configuration.GetSecretKey())
-	documentService = services.NewDocumentService(db, logger, fileManager)
-	languageService = services.NewLanguageService(db, logger)
-	noteService = services.NewNoteService(db, logger)
-	userService = services.NewUserService(db, logger, hasher)
-	contextService = services.NewContextService(db, logger)
-	promptService = services.NewPromptService(db, logger, promptManager, aiCommunicationManager)
+	documentService = services.NewDocumentService(documentRepository, logger, fileManager)
+	languageService = services.NewLanguageService(languageRepository, logger)
+	noteService = services.NewNoteService(noteRepository, logger)
+	userService = services.NewUserService(userRepository, logger, hasher)
+	contextService = services.NewContextService(contextRepository, logger)
+	promptService = services.NewPromptService(promptRepository, logger, promptManager, aiCommunicationManager)
 }
 
 func DoMigrationsIfExists() error {
@@ -102,7 +120,7 @@ func DoMigrationsIfExists() error {
 	return nil
 }
 
-func InitializeHandlers() {
+func initializeHandlers() {
 	utilHandlers = handlers.InitializeUtilHandlers(configuration)
 	anonymousHandlers = handlers.InitializeAnonymousHandlers(logger, userService, authService)
 	authorizedHandlers = handlers.InitializeAuthorizedHandlers(logger, userService, authService, noteService, languageService, documentService, contextService, promptService)
