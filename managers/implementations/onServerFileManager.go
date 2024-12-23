@@ -66,7 +66,7 @@ func (m *OnServerFileManager) DeleteFile(location string, filename string) error
 }
 
 func (m *OnServerFileManager) GetFullPath(location, filename string) string {
-	return fmt.Sprintf("%s/%s/%s", m.basePath, m.locationMap[location], filename)
+	return fmt.Sprintf("%s/%s", m.locationMap[location], filename)
 }
 
 func (m *OnServerFileManager) openFileToWrite(fullpath string, options managers.FileOpeningOptions) (*os.File, error) {
